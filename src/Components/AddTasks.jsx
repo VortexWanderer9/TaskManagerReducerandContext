@@ -8,13 +8,13 @@ function AddTasks() {
    
    
   return (
-    <div>
-        <div className='flex gap-10 mt-5'>
+    <div className='w-full'>
+        <div className='flex gap-2  mt-5 w-full p-5'>
             <input type="text"
             value={text}
             onChange={e => setText(e.target.value)}
             placeholder='Enter Text Here...'
-            className='bg-blue-500 px-2 py-1 rounded'
+            className='bg-amber-300 px-2 py-1 rounded w-full'
             />
             <button 
      onClick={() => {
@@ -25,7 +25,9 @@ function AddTasks() {
             text:text
         })
         setText('');
-    }}>Add</button>
+    }} 
+    className='bg-emerald-400 px-2 py-1 rounded cursor-pointer text-xl font-bold hover:bg-emerald-500 duration-300 ease-in-out' 
+    >Add</button>
         </div>
     </div>
   )

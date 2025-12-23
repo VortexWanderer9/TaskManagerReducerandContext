@@ -6,9 +6,9 @@ function ListTask() {
     const tasks = UseTask();    
   return (
     <>
-    <div className='mt-4 bg-white/10'>
+    <div className='mt-4 flex gap-4 flex-col p-4 w-full max-w-sm overflow-hidden'>
        {tasks.map(task => (
-        <div key={task.id}>
+        <div className='bg-black/20 p-5 rounded' key={task.id}>
          <ListAll task = {task} />
         </div>
        ))}
@@ -24,7 +24,9 @@ const ListAll = ({task}) =>{
     if(isEditing){
         TaskContent = (
             <>
-            <input type="text"
+            <div className='w-25'>
+                <input type="text"
+            className='w-full'
             value={task.text}
             onChange={(e) => {
                 dispatch({
@@ -37,24 +39,20 @@ const ListAll = ({task}) =>{
                 })
             }}
             />
-            <button 
-            onClick={() => setIsEditing(false)}
-            >Save</button>
+            </div>
             </>
         )
     } else {
           TaskContent = (
             <>
-            <p>{task.text}</p>
-            <button 
-            onClick={() => setIsEditing(true)}
-            >Edit</button>
+            <p className='text-xl font-semibold text-neutral-800 overflow-hidden'>{task.text}</p>
             </>
         )
     }
 return (
-    <div className='flex'>
-        <input type="checkbox"
+   <div className='flex'>
+    <input type="checkbox"
+    className='cursor-pointer'
         checked ={task.done}
         onChange={(e) => dispatch({
             type: 'update',
@@ -64,15 +62,23 @@ return (
             }
         })}
         />
+     <div className='flex justify-between w-full items-center ml-3 gap-3                    '>
      {TaskContent}
-
+      <div className='flex gap-4'>
+         <button 
+            onClick={() => setIsEditing(prev => !prev)}
+            className='bg-white p-1 rounded font-bold shadow-2xl cursor-pointer'
+            >{isEditing ? <span className='text-red-600'>Save</span> : <span>Edit</span>}</button>
      <button
      onClick={() => dispatch({
         type: 'delete',
         id: task.id
      })}
+     className='bg-white p-1 rounded font-bold shadow-2xl cursor-pointer'
      >Delete</button>
+      </div>
     </div>
+   </div>
 )
 }
 

@@ -7,7 +7,7 @@ function App() {
   return (
   <div className="min-h-screen w-full bg-white relative">
   <div
-    className="absolute inset-0 z-0"
+    className="fixed inset-0 z-0"
     style={{
       backgroundImage: `
         linear-gradient(to right, #f0f0f0 1px, transparent 1px),
@@ -18,13 +18,13 @@ function App() {
     }}
   />
 <div className='absolute text-black flex items-center justify-center w-full'>
- <div>
+ <div className='w-full'>
     <TaskProvider>
-    <h2>Add All of Your task</h2>
+    <h2 className='text-center text-2xl font-bold mask-t-to-10 mt-5'>Add All of Your task</h2>
     <AddTasks />
+    <h2 className='font-bold text-2xl mask-b-from-1.5'>Tasks :</h2>
     <ListTask />
    </TaskProvider>
-
  </div>
 </div>
 </div>

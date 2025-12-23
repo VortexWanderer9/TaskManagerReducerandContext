@@ -1,6 +1,4 @@
-export const initialTask =[
-    {id: 0, text: "Complete Development Task", done: false}
-]
+export const initialTask = []
 export const TaskReducer = (tasks, action)  => {
     console.log(action);
     
